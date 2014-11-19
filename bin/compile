@@ -10,11 +10,18 @@ cache_dir=$2
 env_dir=$3
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 
-# CF Common
 BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
-source $bp_dir/compile-extensions/lib/common
-# END CF Common
+
+# show version
+echo "-------> Buildpack version $(cat $BUILDPACK_PATH/VERSION)"
+# END show version
+
+# curl shim
+if test -d $BUILDPACK_PATH/dependencies; then
+  export PATH=$bp_dir/compile-extensions/bin:$PATH
+fi
+# END curl shim
 
 # Fix leak
 unset GIT_DIR
