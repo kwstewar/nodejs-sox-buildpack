@@ -13,15 +13,10 @@ bp_dir=$(cd $(dirname $0); cd ..; pwd)
 BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
 
-# show version
-echo "-------> Buildpack version $(cat $BUILDPACK_PATH/VERSION)"
-# END show version
 
-# curl shim
-if test -d $BUILDPACK_PATH/dependencies; then
-  export PATH=$bp_dir/compile-extensions/bin:$PATH
-fi
-# END curl shim
+# BEGIN compile-extensions
+source ${BUILDPACK_PATH}/compile-extensions/bin/extend.sh ${BUILDPACK_PATH}
+# END compile-extensions
 
 # Fix leak
 unset GIT_DIR
