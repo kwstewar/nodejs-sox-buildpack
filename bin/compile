@@ -10,13 +10,11 @@ cache_dir=$2
 env_dir=$3
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 
+# CF Common
 BUILDPACK_PATH=$bp_dir
 export BUILDPACK_PATH
-
-
-# BEGIN compile-extensions
 source ${BUILDPACK_PATH}/compile-extensions/bin/extend.sh ${BUILDPACK_PATH}
-# END compile-extensions
+# END CF Common
 
 # Fix leak
 unset GIT_DIR
