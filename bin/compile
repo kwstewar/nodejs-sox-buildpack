@@ -147,9 +147,11 @@ if [ ! -e $build_dir/Procfile ]; then
 fi
 
 # Add SOX binary and libraries to path
+echo "Adding SOX library support"
 tar xvzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
 
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
-echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/vendor/:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/libs/\";" >> $build_dir/.profile.d/nodejs.sh
