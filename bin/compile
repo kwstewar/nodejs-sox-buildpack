@@ -146,6 +146,9 @@ if [ ! -e $build_dir/Procfile ]; then
   fi
 fi
 
+# Add SOX binary and libraries to path
+tar xvzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
+
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
