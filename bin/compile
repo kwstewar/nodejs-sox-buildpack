@@ -147,8 +147,8 @@ if [ ! -e $build_dir/Procfile ]; then
 fi
 
 # Add SOX binary and libraries to path
-echo "Adding SOX library support"
-tar xvzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
+status "Adding SOX library support"
+tar xzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
 
 # Update the PATH
 status "Building runtime environment"
