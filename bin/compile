@@ -150,11 +150,9 @@ fi
 status "Adding SOX library support"
 tar xzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
 
-status "apt-getting sox"
-apt-get install sox libsox-fmt-mp3
 
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
-echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/vendor/:\$HOME/vendor/bin/:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
-echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/libs/\";" >> $build_dir/.profile.d/nodejs.sh
+echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/vendor/sox/bin/:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/sox/lib/\";" >> $build_dir/.profile.d/nodejs.sh
